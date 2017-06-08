@@ -16,8 +16,8 @@
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
     "react-native-incall-manager": "^2.1.0",
-    "websocket": "^1.0.24",
-  }
+    "websocket": "^1.0.24"
+  },
   "keywords": [
     "SIP",
     "WebRTC",
