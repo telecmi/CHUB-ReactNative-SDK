@@ -1,0 +1,32 @@
+{
+  "name": "react-native-chub",
+  "version": "0.1.0",
+  "description": "ContactHUB SDK for react-native",
+  "main": "JsSIP.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/telecmi/react-native-chub.git"
+  },
+"dependencies": {
+    "events": "^1.1.1",
+    "react-native-webrtc": "^1.57.1",
+    "sdp-transform": "^2.3.0",
+    "util": "^0.10.3",
+    "websocket": "^1.0.24",
+  }
+  "keywords": [
+    "SIP",
+    "WebRTC",
+    "contacthub",
+    "telecmi"
+  ],
+  "author": "Murugan Pandian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/telecmi/react-native-chub/issues"
+  },
+  "homepage": "https://github.com/telecmi/react-native-chub#readme"
+}

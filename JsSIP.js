@@ -1,0 +1,43 @@
+/**
+ * Dependencies.
+ */
+var debug = require('debug')('JsSIP', true);
+
+
+var rtcninja = require('./rtcninja');
+var C = require('./Constants');
+var Exceptions = require('./Exceptions');
+var Utils = require('./Utils');
+var UA = require('./UA');
+var URI = require('./URI');
+var NameAddrHeader = require('./NameAddrHeader');
+var Grammar = require('./Grammar');
+
+
+/**
+ * Expose the JsSIP module.
+ */
+var JsSIP = module.exports = {
+  C: C,
+  Exceptions: Exceptions,
+  Utils: Utils,
+  UA: UA,
+  URI: URI,
+  NameAddrHeader: NameAddrHeader,
+  Grammar: Grammar,
+  // Expose the debug module.
+  debug: require('debug'),
+  // Expose the rtcninja module.
+  rtcninja: rtcninja
+};
+
+
+Object.defineProperties(JsSIP, {
+  name: {
+    get: function() { return 'JsSIP'; }
+  },
+
+  version: {
+    get: function() { return '3.0.12'; }
+  }
+});
