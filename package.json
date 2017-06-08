@@ -2,7 +2,7 @@
   "name": "react-native-chub",
   "version": "0.1.0",
   "description": "ContactHUB SDK for react-native",
-  "main": "JsSIP.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
     "react-native-webrtc": "^1.57.1",
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
+    "react-native-incall-manager": "^2.1.0",
     "websocket": "^1.0.24",
   }
   "keywords": [
