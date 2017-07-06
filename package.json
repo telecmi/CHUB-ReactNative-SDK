@@ -12,7 +12,7 @@
   },
 "dependencies": {
     "events": "^1.1.1",
-    "react-native-webrtc": "https://github.com/murugancmi/react-native-webrtc.git",
+    "react-native-webrtc": "git+https://github.com/murugancmi/react-native-webrtc.git",
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
     "react-native-incall-manager": "^2.1.0",
