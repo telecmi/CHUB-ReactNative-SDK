@@ -4,6 +4,85 @@
 module.exports = RTCPeerConnection;
 
 
+//Select prefer codec default G722
+
+function forceChosenAudioCodec(sdp) {
+  return maybePreferCodec(sdp, 'audio', 'send','PCMA');
+}
+
+function maybePreferCodec(sdp, type, dir, codec) {
+  var str = type + ' ' + dir + ' codec';
+  if (codec === '') {
+    return sdp;
+  }
+
+
+  var sdpLines = sdp.split('\r\n');
+
+  // Search for m line.
+  var mLineIndex = findLine(sdpLines, 'm=', type);
+  if (mLineIndex === null) {
+    return sdp;
+  }
+
+  // If the codec is available, set it as the default in m line.
+  var codecIndex = findLine(sdpLines, 'a=rtpmap', codec);
+  if (codecIndex) {
+    var payload = getCodecPayloadType(sdpLines[codecIndex]);
+    if (payload) {
+      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);
+    }
+  }
+
+  sdp = sdpLines.join('\r\n');
+  return sdp;
+}
+
+function findLine(sdpLines, prefix, substr) {
+  return findLineInRange(sdpLines, 0, -1, prefix, substr);
+}
+
+function findLineInRange(sdpLines, startLine, endLine, prefix, substr) {
+  var realEndLine = endLine !== -1 ? endLine : sdpLines.length;
+  for (var i = startLine; i < realEndLine; ++i) {
+    if (sdpLines[i].indexOf(prefix) === 0) {
+      if (!substr ||
+          sdpLines[i].toLowerCase().indexOf(substr.toLowerCase()) !== -1) {
+        return i;
+      }
+    }
+  }
+  return null;
+}
+
+function getCodecPayloadType(sdpLine) {
+  var pattern = new RegExp('a=rtpmap:(\\d+) \\w+\\/\\d+');
+  var result = sdpLine.match(pattern);
+  return (result && result.length === 2) ? result[1] : null;
+}
+
+function setDefaultCodec(mLine, payload) {
+  var elements = mLine.split(' ');
+
+  // Just copy the first three parameters; codec order starts on fourth.
+  var newLine = elements.slice(0, 3);
+
+  // Put target payload first and copy in the rest.
+  newLine.push(payload);
+  for (var i = 3; i < elements.length; i++) {
+    if (elements[i] !== payload) {
+      newLine.push(elements[i]);
+    }
+  }
+  return newLine.join(' ');
+}
+
+
+
+
+
+
+
 // Dependencies.
 
 var merge = require('merge'),
@@ -78,10 +157,12 @@ RTCPeerConnection.prototype.createOffer = function (successCallback, failureCall
 
 	this.pc.createOffer(
 		function (offer) {
+			console.log(offer)
 			if (isClosed.call(self)) {
 				return;
 			}
 			debug('createOffer() | success');
+			offer.sdp=forceChosenAudioCodec(offer.sdp);
 			if (successCallback) {
 				successCallback(offer);
 			}
@@ -119,6 +200,7 @@ RTCPeerConnection.prototype.createAnswer = function (successCallback, failureCal
 			if (isClosed.call(self)) {
 				return;
 			}
+			answer.sdp=forceChosenAudioCodec(answer.sdp)
 			debugerror('createAnswer() | error:', error);
 			if (failureCallback) {
 				failureCallback(error);
@@ -414,7 +496,7 @@ RTCPeerConnection.prototype.reset = function (pcConfig) {
 
 function setConfigurationAndOptions(pcConfig) {
 	// Clone pcConfig.
-	this.pcConfig = merge(true, pcConfig);
+	this.pcConfig = pcConfig;
 
 	// Fix pcConfig.
 	Adapter.fixPeerConnectionConfig(this.pcConfig);
@@ -470,9 +552,10 @@ function setEvents() {
 		}
 
 		candidate = event.candidate;
-		console.log(candidate)
 
 		if (candidate) {
+
+
 			isRelay = C.REGEXP_RELAY_CANDIDATE.test(candidate.candidate);
 
 			// Ignore if just relay candidates are requested.

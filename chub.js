@@ -7,59 +7,58 @@ export default class chub{
 constructor()
 {
   var self=this;
-  this.verto = new jssip.UA({
-             uri: 'sip:telecmi@chubws.telecmi.com',
-             ws_servers: 'wss://chubws.telecmi.com',
-             password: 'telecmi',
-             'register_expires': 120,
-              stun_servers: ["stun:stun.l.google.com:19302"]
-         });
-
-  //Websocket connection opened
-              this.verto.on('connected', function () {
-                console.log('its connect')
-                  self.onStatus({
-                      event: 'ws',
-                      status: 'open'
-                  })
-              });
-              //Websocket connection closed
-              this.verto.on('disconnected', function (e) {
-                  self.onStatus({
-                      event: 'ws',
-                      status: 'closed'
-                  })
-              });
-              //Registered successfully
-              this.verto.on('registered', function () {
-                console.log('register')
-                  self.onStatus({
-                      event: 'register',
-                      status: true
-                  })
-              });
-
-              //Register failed
-              this.verto.on('registrationFailed', function (e) {
-                  self.onStatus({
-                      event: 'register',
-                      status: false
-                  })
-              });
-
-              //Unregister  successfully
-              this.verto.on('unregistered', function () {
-                  self.onStatus({
-                      event: 'register',
-                      status: false
-                  })
-              });
-
-
-        this.startCHUB=function()
+     this.startCHUB = (agentid,password) =>
         {
-          this.verto.start();
+                let agent = agentid || 1;
+                let pwd = password || 1;
+                this.verto = new jssip.UA({
+                     uri: 'sip:'+agent+'@chubws.telecmi.com',
+                     ws_servers: 'wss://chubws.telecmi.com',
+                     password: pwd.toString(),
+                      stun_servers: ["stun:stun.l.google.com:19302"]
+                     });
+
+                      //Websocket connection opened
+                      this.verto.on('connected', () => {
+                          self.onStatus({
+                              event: 'ws',
+                              status: 'open'
+                          })
+                      });
+                      //Websocket connection closed
+                      this.verto.on('disconnected', (e) =>  {
+                          self.onStatus({
+                              event: 'ws',
+                              status: 'closed'
+                          })
+                      });
+                      //Registered successfully
+                      this.verto.on('registered', () => {
+                          self.onStatus({
+                              event: 'register',
+                              status: true
+                          })
+                      });
+
+                      //Register failed
+                      this.verto.on('registrationFailed', (e) => {
+                          self.onStatus({
+                              event: 'register',
+                              status: false
+                          })
+                      });
+
+                      //Unregister  successfully
+                      this.verto.on('unregistered', () => {
+                          self.onStatus({
+                              event: 'register',
+                              status: false
+                          })
+                      });
+
+                    this.verto.start();
         }
+
 
 
         var eventHandlers = {
@@ -144,7 +143,7 @@ constructor()
 
     this.onStatus=function(data){}
 
-    this.key=function(dtmf)
+    this.dtmf=function(dtmf)
     {
       var key = key | 'A'
         if (self.telecmi_call) {

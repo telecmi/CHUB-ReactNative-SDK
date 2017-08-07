@@ -1,33 +1,95 @@
 {
-  "name": "react-native-chub",
-  "version": "0.1.0",
-  "description": "ContactHUB SDK for react-native",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/telecmi/react-native-chub.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/telecmi/react-native-chub.git",
+        "spec": "git+https://github.com/telecmi/react-native-chub.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:telecmi/react-native-chub.git",
+          "sshUrl": "git+ssh://git@github.com/telecmi/react-native-chub.git",
+          "httpsUrl": "git+https://github.com/telecmi/react-native-chub.git",
+          "gitUrl": "git://github.com/telecmi/react-native-chub.git",
+          "shortcut": "github:telecmi/react-native-chub",
+          "directUrl": "https://raw.githubusercontent.com/telecmi/react-native-chub/master/package.json"
+        }
+      },
+      "/home/telecmi/Desktop/ayoo"
+    ]
+  ],
+  "_from": "git+https://github.com/telecmi/react-native-chub.git",
+  "_id": "react-native-chub@0.1.0",
+  "_inCache": true,
+  "_location": "/react-native-chub",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/telecmi/react-native-chub.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/telecmi/react-native-chub.git",
+    "spec": "git+https://github.com/telecmi/react-native-chub.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:telecmi/react-native-chub.git",
+      "sshUrl": "git+ssh://git@github.com/telecmi/react-native-chub.git",
+      "httpsUrl": "git+https://github.com/telecmi/react-native-chub.git",
+      "gitUrl": "git://github.com/telecmi/react-native-chub.git",
+      "shortcut": "github:telecmi/react-native-chub",
+      "directUrl": "https://raw.githubusercontent.com/telecmi/react-native-chub/master/package.json"
+    }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/telecmi/react-native-chub.git"
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/telecmi/react-native-chub.git#56d229a5b7a6fc119382b800c1c2a85cb335cf65",
+  "_shasum": "f0db35cc4ce9ce06b90c0b1205ca2986a0085ac1",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/telecmi/react-native-chub.git",
+  "_where": "/home/telecmi/Desktop/ayoo",
+  "author": {
+    "name": "Murugan Pandian"
   },
-"dependencies": {
+  "bugs": {
+    "url": "https://github.com/telecmi/react-native-chub/issues"
+  },
+  "dependencies": {
     "events": "^1.1.1",
+    "react-native-incall-manager": "^2.1.0",
     "react-native-webrtc": "1.58.1",
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
-    "react-native-incall-manager": "^2.1.0",
     "websocket": "^1.0.24"
   },
+  "description": "ContactHUB SDK for react-native",
+  "devDependencies": {},
+  "gitHead": "56d229a5b7a6fc119382b800c1c2a85cb335cf65",
+  "homepage": "https://github.com/telecmi/react-native-chub#readme",
   "keywords": [
     "SIP",
     "WebRTC",
     "contacthub",
     "telecmi"
   ],
-  "author": "Murugan Pandian",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/telecmi/react-native-chub/issues"
+  "main": "index.js",
+  "name": "react-native-chub",
+  "optionalDependencies": {},
+  "readme": "# react-native-chub\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/telecmi/react-native-chub.git"
   },
-  "homepage": "https://github.com/telecmi/react-native-chub#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
 }

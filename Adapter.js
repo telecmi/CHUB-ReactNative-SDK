@@ -102,6 +102,7 @@ console.log(getUserMedia)
 			}
 		};
 	} else {
+		console.log(constraints)
 		Adapter.getUserMedia = function (constraints, successCallback, errorCallback) {
 			debugerror('getUserMedia() | WebRTC not supported');
 			if (errorCallback) {
