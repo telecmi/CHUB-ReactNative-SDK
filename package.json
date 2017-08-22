@@ -9,7 +9,7 @@
   "dependencies": {
     "events": "^1.1.1",
     "react-native-incall-manager": "^2.1.0",
-    "react-native-webrtc": "1.58.1",
+    "react-native-webrtc": "1.58.2",
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
     "websocket": "^1.0.24"
