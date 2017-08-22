@@ -1,5 +1,5 @@
 { "name": "chub-reactnative-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ContactHUB SDK for ReactNative,Enable communication from your IOS and Android app",
  "homepage": "https://telecmi.com",
  "author": "Murugan Pandian <murugan@telecmi.com> (https://github.com/murugancmi)",
@@ -9,7 +9,7 @@
   "dependencies": {
     "events": "^1.1.1",
     "react-native-incall-manager": "^2.1.0",
-    "react-native-webrtc": "1.58.1",
+    "react-native-webrtc": "1.58.2",
     "sdp-transform": "^2.3.0",
     "util": "^0.10.3",
     "websocket": "^1.0.24"
@@ -30,5 +30,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/telecmi/chub-reactnative-sdk.git"
-  },
+  }
 }
