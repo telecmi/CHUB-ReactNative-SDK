@@ -26,7 +26,7 @@ var Parser = require('./Parser');
 var SIPMessage = require('./SIPMessage');
 var sanityCheck = require('./sanityCheck');
 // 'websocket' module uses the native WebSocket interface when bundled to run in a browser.
-var W3CWebSocket = require('websocket').w3cwebsocket;
+
 
 
 function Transport(ua, server) {
@@ -76,9 +76,9 @@ Transport.prototype = {
       // (may just happen if the above `var W3CWebSocket` line is overriden by
       // `var W3CWebSocket = global.W3CWebSocket`).
       if (W3CWebSocket.length > 3) {
-        this.ws = new W3CWebSocket(this.server.ws_uri, 'sip', this.node_websocket_options.origin, this.node_websocket_options.headers, this.node_websocket_options.requestOptions, this.node_websocket_options.clientConfig);
+        this.ws = new WebSocket(this.server.ws_uri, 'sip', this.node_websocket_options.origin, this.node_websocket_options.headers, this.node_websocket_options.requestOptions, this.node_websocket_options.clientConfig);
       } else {
-        this.ws = new W3CWebSocket(this.server.ws_uri, 'sip');
+        this.ws = new WebSocket(this.server.ws_uri, 'sip');
       }
 
       this.ws.binaryType = 'arraybuffer';
