@@ -2,7 +2,7 @@ ContactHUB ReactNative SDK
 ===================
 
 
-ContactHUB ! Enable App IVR in your APP using our ReactNative SDK, Were your custamer directly talk from your APP using internet, now your custamer touch with your support,technical team from your mobile APP.
+ContactHUB ! Enable App IVR in your APP using our ReactNative SDK, Were your custamer directly talk from your APP using internet, now your customer touch with your support,technical team from your mobile APP.
 
 
 
